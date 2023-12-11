@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import {
+  Header,
+  HeroSection,
+  Services,
+  Portfolio,
+  Skill,
+  Contact,
+  Footer,
+} from "./components/index";
 
 function App() {
+  const [dark, setDark] = useState(false);
+  const toggleTheme = () => {
+    setDark(!dark);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`${dark ? "dark-theme" : "light-theme"}`}>
+      <Header dark={dark} toggleTheme={toggleTheme} />
+      <main>
+        <HeroSection dark={dark} />
+        <Services dark={dark} />
+        <Portfolio dark={dark} />
+        <Skill dark={dark} />
+        <Contact dark={dark} />
+      </main>
+      <Footer dark={dark} />
     </div>
   );
 }
